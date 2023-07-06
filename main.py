@@ -5,7 +5,7 @@ import webbrowser
 from playlist import saved_to_playlists
 
 scope='user-read-playback-state, user-modify-playback-state, user-read-currently-playing, user-library-modify, user-library-read, playlist-read-private, playlist-read-collaborative, playlist-modify-private, playlist-modify-public'
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret= cred.client_SECRET, redirect_uri=cred.redirect_url, scope=scope))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret= cred.client_SECRET, redirect_uri=cred.redirect_uri, scope=scope))
 
 
 # Get id of web player device

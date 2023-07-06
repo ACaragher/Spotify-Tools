@@ -1,0 +1,17 @@
+{% extends "home/base.html" %}
+{% block title %}
+    <title>Home</title>
+{% endblock title%}
+{% block content %}
+<main role="main" class="container">
+    <div class="card welcome-card">
+        <div class="card-body text-center">
+            <h3 class="card-title">Spotify Playlist Tools Home</h3>
+            <p class="card-text">Login to your Spotify account to access the tools</p>
+            <a href="{% url 'spotify-login' %}" class="btn btn-primary">Login Here</a>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content%}
