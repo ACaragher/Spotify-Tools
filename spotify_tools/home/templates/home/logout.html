@@ -1,0 +1,12 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <main role="main" class="container">
+        <div class="card welcome-card">
+            <div class="card-body text-center">
+                <h3 class="card-title">You have been logged out</h3>
+                <p class="card-text">Login to your Spotify account again?</p>
+                <a href="{% url "social:begin" "spotify" %}" class="btn btn-primary">Login Here</a>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

@@ -37,16 +37,25 @@ ul {
 }
 
 .welcome-card {
-    margin-top: 10px;
-    
+  display: flex;
+  flex-grow: 2;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
-.content-section {
+.sidebar {
   background: #ffffff;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+li > a, a:hover {
+  color: #128b3c;
 }
 
 .btn-primary {

@@ -20,8 +20,11 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="{% url 'spotify-login' %}">Login</a>
-                        <a class="nav-item nav-link" href="#">Register</a>
+                        {% if user.is_authenticated%}
+                            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                                <a class="nav-item nav-link" href="{% url "social:begin" "spotify" %}">Login</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -1,8 +1,10 @@
-from django.urls import path
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('spotify_login', views.spotify_login, name='spotify-login'),
-    path('spotify_login/complete', views.spotify_loggedin, name='spotify-loggedin')
+    path('login_success', views.spotify_login_complete, name='spotify-login-complete'),
+    path('logout', auth_views.LogoutView.as_view(template_name="home/logout.html"), name='logout'),
 ]
