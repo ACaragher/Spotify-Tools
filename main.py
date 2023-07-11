@@ -2,7 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import cred
 import webbrowser
-from playlist import saved_to_playlists
+from playlist import liked_to_playlists
 
 scope='user-read-playback-state, user-modify-playback-state, user-read-currently-playing, user-library-modify, user-library-read, playlist-read-private, playlist-read-collaborative, playlist-modify-private, playlist-modify-public'
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret= cred.client_SECRET, redirect_uri=cred.redirect_uri, scope=scope))
@@ -20,4 +20,4 @@ while web_device == '':
         if devices[i]['name'].startswith('Web Player'):
             web_device = devices[i]['id']
 
-saved_to_playlists(sp, web_device)
+liked_to_playlists(sp, web_device)

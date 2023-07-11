@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Token(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    access_token = models.CharField(max_length=300)
+    access_token = models.CharField(max_length=500)
     refresh_token = models.CharField(max_length=300)
     auth_time = models.IntegerField()
     token_type = models.CharField(max_length=50)

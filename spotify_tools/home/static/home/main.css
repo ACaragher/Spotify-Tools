@@ -40,6 +40,7 @@ ul {
   display: flex;
   flex-grow: 2;
   align-self: flex-start;
+  align-content: stretch;
   margin-top: 10px;
   margin-right: 10px;
 }
@@ -63,8 +64,24 @@ li > a, a:hover {
     border: none;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: #128b3c;
 }
 
+.player {
+  display: flex;
+  align-self: flex-start;
+  margin-top: 30px;
+}
 
+.track {
+  font-size: 1.3rem;
+}
+
+.artist {
+  font-size: 1rem;
+}
+
+.btn-skip {
+  background-color: #b12323;
+}

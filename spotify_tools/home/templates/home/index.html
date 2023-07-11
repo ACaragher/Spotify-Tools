@@ -16,7 +16,7 @@
                 <div class="sidebar">
                     <h3>Tools</h3>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-light"><a href="#">Saved Songs to Playlists</a></li>
+                        <li class="list-group-item list-group-item-light"><a href="{% url 'liked_to_playlists:start' %}">Liked Songs to Playlists</a></li>
                         <li class="list-group-item list-group-item-light"><a href="#">Live Songs to Playlist</a></li>
                         <li class="list-group-item list-group-item-light"><a href="#">Future Tool 1</a></li>
                         <li class="list-group-item list-group-item-light"><a href="#">Future Tool 2</a></li>
@@ -32,7 +32,7 @@
             <div class="card-body text-center">
                 <h3 class="card-title">Spotify Playlist Tools Home</h3>
                 <p class="card-text">Login to your Spotify account to access the tools</p>
-                <a href="{% url "social:begin" "spotify" %}" class="btn btn-primary">Login Here</a>
+                <a href="{% url 'social:begin' 'spotify' %}" class="btn btn-primary">Login Here</a>
             </div>
         </div>
     </main>

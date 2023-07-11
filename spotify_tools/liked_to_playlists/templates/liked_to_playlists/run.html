@@ -1,0 +1,61 @@
+{% extends "home/base.html" %}
+{% block title %}
+    <title>Home</title>
+{% endblock title%}
+{% block content %}
+{% if request.user.is_authenticated %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md card welcome-card">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Liked Songs to Playlists</h3>
+                    <p class="card-text">Go through each of your liked songs and pick a playlist to quickly add them to</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md card mt-3 mr-3 p-0 align-self-start">
+                <div class="card-header text-center" style="height: 3rem;">
+                    <p>Playing:</p>
+                </div>
+                <div class="card-body text-center">
+                    <p class="card-text track">{{ track }}</p>
+                    <p class="card-text artist">{{ artist }}</p>
+                    <img src="{{ image }}" class="card-img" style="width: 70%;">
+                </div>
+            </div>
+            <div class="col-md card mt-3 p-0 align-self-start"> 
+                <div class="card-header text-center" style="height: 3rem;">
+                    <p>Playlists:</p>
+                </div>
+                <div class="card-body">
+                    {% for playlist in playlists %}
+                    <div class="m-3 text-center">
+                        <a class="btn-primary btn-lg btn-block" href="{% url 'liked_to_playlists:run' forloop.counter %}">{{ playlist }}</a>
+                    </div>
+                    {% endfor %}
+                    <hr></hr>
+                    <div class="m-3 text-center">
+                        <a class="btn-primary btn-lg btn-block btn-skip" href="{% url 'liked_to_playlists:run' 0 %}">Skip</a>
+                    </div>
+                    <div class="m-3 text-center">
+                        <a class="btn-primary btn-lg btn-block" href="{% url 'liked_to_playlists:save' 0 %}">Save and Exit</a>
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </main>
+
+{% else %}
+    <main role="main" class="container">
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title">Spotify Playlist Tools Home</h3>
+                <p class="card-text">Login to your Spotify account to access the tools</p>
+                <a href="{% url "social:begin" "spotify" %}" class="btn btn-primary">Login Here</a>
+            </div>
+        </div>
+    </main>
+{% endif %}
+
+{% endblock content%}

@@ -5,5 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('social/', include('social_django.urls')),
-    path('saved2playlists/', include('saved2playlists.urls')),
+    path('liked_to_playlists/', include('liked_to_playlists.urls', namespace='liked_to_playlists')),
 ]

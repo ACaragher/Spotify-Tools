@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 
-def saved_to_playlists(sp, web_device):
+def liked_to_playlists(sp, web_device):
     # Get all of the user's playlists
     user = sp.current_user()
     playlists = sp.user_playlists(user['id'])['items']
@@ -8,15 +8,15 @@ def saved_to_playlists(sp, web_device):
     next = " "
     curr_offset = 0
     
-    # Loop through all of the user's saved songs
+    # Loop through all of the user's liked songs
     while next:
         # Get next 50 tracks (50 is the max number of tracks that can be retreived per call)
-        saved_songs = sp.current_user_saved_tracks(offset=curr_offset, limit=50)
-        next = saved_songs['next']
-        for i in range(len(saved_songs)):
+        liked_songs = sp.current_user_saved_tracks(offset=curr_offset, limit=50)
+        next = liked_songs['next']
+        for i in range(len(liked_songs)):
                 valid = False
 
-                track = saved_songs['items'][i]['track']
+                track = liked_songs['items'][i]['track']
                 artist = track['artists'][0]['name']
                 sp.start_playback(web_device, uris=[track['uri']],position_ms=0)
 

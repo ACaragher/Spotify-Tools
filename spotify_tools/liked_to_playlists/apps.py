@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class Saved2playlistsConfig(AppConfig):
+class Liked_to_playlistsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'saved2playlists'
+    name = 'liked_to_playlists'

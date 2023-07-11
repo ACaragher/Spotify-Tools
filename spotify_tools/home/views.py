@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from . import config
-from social_django.models import UserSocialAuth
+
+from spotify_tools import config
+
 
 def index(request):
     return render(request, 'home/index.html')
@@ -12,7 +13,4 @@ def spotify_login(request):
     return redirect(auth_url)
 
 def spotify_login_complete(request):
-    context = {
-        'access_token': UserSocialAuth.objects.last().extra_data['access_token']
-    }
-    return render(request, 'home/index.html', context)
+    return render(request, 'home/index.html')
