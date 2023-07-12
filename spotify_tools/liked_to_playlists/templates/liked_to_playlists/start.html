@@ -23,6 +23,10 @@
                         <p></p>
                         <p>2. Once completed, click start.</p>
                         <a class="btn-primary btn-lg" href="{% url 'liked_to_playlists:run' %}">Start</a>
+                        {% if failure %}
+                        <p></p>
+                        <p style="color: rgb(182, 18, 18);">Make sure to have Spotify open in another tab!</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -44,7 +48,7 @@
             <div class="card-body text-center">
                 <h3 class="card-title">Spotify Playlist Tools Home</h3>
                 <p class="card-text">Login to your Spotify account to access the tools</p>
-                <a href="{% url "social:begin" "spotify" %}" class="btn btn-primary">Login Here</a>
+                <a href="{% url 'social:begin' 'spotify' %}" class="btn btn-primary">Login Here</a>
             </div>
         </div>
     </main>

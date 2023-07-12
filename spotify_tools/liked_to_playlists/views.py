@@ -1,27 +1,79 @@
-from django.shortcuts import render, redirect
-import requests
-from spotify_tools import config
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from home.models import Token
 import spotipy
 
+LIMIT = 50
+
+@login_required
 def start(request):
-    try:
-        token=Token.objects.filter(user=request.user).first()
-        sp = spotipy.Spotify(auth=token)
-    except spotipy.client.SpotifyException:
-        print("\n\n\nEntered\n\n\n")
-        sp_auth = config.sp_auth
-        new_token = sp_auth.refresh_access_token(token.refresh_token)
-        token.access_token = new_token['access_token']
-        token.refresh_token = new_token['refresh_token']
-        sp = spotipy.Spotify(auth=token)
 
-    premium = False
+    token=Token.objects.filter(user=request.user).first()
+    sp = spotipy.Spotify(auth=token)
+
     if sp.current_user()['product'] == 'premium':
-        premium = True
-    return render(request, 'liked_to_playlists/start.html', {'premium': premium})
+        liked_songs = sp.current_user_saved_tracks(offset=0, limit=LIMIT)['items']
+        for i in range(len(liked_songs)):
+            request.session[i] = liked_songs[i]['track']
+        request.session["current_track"] = 0
+        request.session["offset"] = 50
+        request.session.save()
+        return render(request, 'liked_to_playlists/start.html', {'premium': True})
+    else:
+        return render(request, 'liked_to_playlists/start.html', {'premium': False})
+    
+@login_required
+def run(request):
 
+    sp = spotipy.Spotify(auth=Token.objects.filter(user=request.user).first())
+    user_playlists = sp.current_user_playlists()['items']
 
+    track_key = request.session["current_track"]
+    track = request.session[str(track_key)]
+    if request.method == 'POST':
+        if 'skip' not in request.POST:
+            index = request.POST.get("playlist", "")
+            if int(index) >= 0:
+                sp.playlist_add_items(playlist_id=user_playlists[int(index)-1]['id'], items=[track['uri']])      
+            
+        del request.session[str(track_key)]
+        
+        if str(int(track_key) + 1) not in request.session.keys():
+            liked_songs = sp.current_user_saved_tracks(offset=request.session["offset"], limit=LIMIT)['items']
+            if liked_songs:
+                for i in range(len(liked_songs)):
+                    request.session[i] = liked_songs[i]['track']
+                request.session["current_track"] = 0
+                request.session["offset"] += 50
+            else:
+                render(request, 'liked_to_playlist/complete.html')
+        else:
+            request.session["current_track"] = int(track_key) + 1  
+            track = request.session[str(int(track_key) + 1)]
+    
+    web_device = ''
+    devices = sp.devices()['devices']
+    for i in range(len(devices)):
+        if devices[i]['name'].startswith('Web Player'):
+            web_device = devices[i]['id']
+
+    if web_device == '':
+        return render(request, "liked_to_playlists/start.html", {'failure': True, 'premium': True}) 
+    
+    sp.start_playback(web_device, uris=[track['uri']],position_ms=0)
+    playlists = []
+    for i in range(len(user_playlists)):
+        playlists.append(user_playlists[i]['name'])
+    context = {
+        'track': track['name'],
+        'uri': track['uri'],
+        'artist': track['artists'][0]['name'],
+        'image': track['album']['images'][0]['url'],
+        'playlists': playlists,
+    }
+    return render(request, 'liked_to_playlists/run.html', context)
+
+"""
 def run(request, index=None):
 
     sp = spotipy.Spotify(auth=Token.objects.filter(user=request.user).first())
@@ -58,4 +110,4 @@ def run(request, index=None):
         }
         return render(request, 'liked_to_playlists/run.html', context)
 
-# If user wants to save progress, simply save the offset, use with added on value in return from current_user_saved_tracks to add new songs
+"""

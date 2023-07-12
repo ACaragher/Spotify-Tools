@@ -82,6 +82,10 @@ li > a, a:hover {
   font-size: 1rem;
 }
 
-.btn-skip {
+.btn-secondary {
   background-color: #b12323;
+}
+
+.btn-secondary:hover {
+  background-color: #8f1c1c;
 }
