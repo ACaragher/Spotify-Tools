@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'home',
     'liked_to_playlists',
     'social_django',
+    'setlist',
+    'combine_playlists',
 ]
 
 #AUTH_USER_MODEL = "home.CustomUser"

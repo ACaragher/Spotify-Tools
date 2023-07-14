@@ -1,0 +1,79 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}
+    <title>Home</title>
+{% endblock title%}
+{% block content %}
+{% if request.user.is_authenticated %}
+    <main role="main" class="container">
+        {% if premium %}
+            <div class="row">
+                <div class="col-md card welcome-card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Combine Playlists</h3>
+                        <p class="card-text">Select two or more playlists to combine</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md card mt-3">
+                    <div class="card-body">
+                        <h5 class="text-center">1. Select which playlist(s) to copy:</h5>
+                        <form action="{% url 'combine_playlists:complete' %}" method="post">
+                            {% csrf_token %}
+                                <div class="form-check mb-4">
+                                    {% for playlist in playlists %}
+                                    <div class="m-3 text-center col-6 mx-auto">
+                                        <input type="checkbox" class="playlist-check form-check-input" id="check {{ forloop.counter0 }}" name="playlist_checkbox" value="{{ forloop.counter0 }}">
+                                        <label class="btn-lg btn-block btn-check form-label" for="check {{ forloop.counter0 }}">{{ playlist }}</label>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <hr>
+                                <h5 class="text-center">2. Select which playlist to copy to:</h5>
+                                <div class="text-center col-6 mx-auto mt-3">
+                                    <select class="custom-select text-center" id="playlistselect" name="playlist_select">
+                                        <option selected value="">Select a playlist to copy to...</option>
+                                        {% for playlist in playlists %}
+                                        <option value="{{ forloop.counter0 }}">{{ playlist }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" class="btn btn-primary my-3" name="current_playlist_btn">Submit</button>
+                                    <br>
+                                    <h6> - or - </h6>
+                                    <h5 class="text-center">Create a new playlist, enter its name below:</h5>
+                                    <input type="text" class="form-control text-center mt-2" name="new_playlist" blank=False>
+                                    <button type="submit" class="btn btn-primary mt-3" name="new_playlist_btn">Submit</button>
+                                </div>
+                                {% if error %}
+                                <p class="text-center" style="color: red;">{{ error_text }}</p>
+                                {% endif %}
+                        </form>      
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-md card welcome-card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Combine Playlists</h3>
+                        <p class="card-text" style="color: rgb(156, 3, 3);">Sorry, this feature requires a premium Spotify account</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+
+{% else %}
+    <main role="main" class="container">
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title">Spotify Playlist Tools Home</h3>
+                <p class="card-text">Login to your Spotify account to access the tools</p>
+                <a href="{% url 'social:begin' 'spotify' %}" class="btn btn-primary">Login Here</a>
+            </div>
+        </div>
+    </main>
+{% endif %}
+
+{% endblock content%}

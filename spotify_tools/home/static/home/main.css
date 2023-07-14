@@ -36,23 +36,12 @@ ul {
     font-size: 1.1rem;
 }
 
-.welcome-card {
-  display: flex;
-  flex-grow: 2;
-  align-self: flex-start;
-  align-content: stretch;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
 .sidebar {
   background: #ffffff;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   text-align: center;
-  margin-left: 10px;
-  margin-top: 10px;
 }
 
 li > a, a:hover {
@@ -60,18 +49,26 @@ li > a, a:hover {
 }
 
 .btn-primary {
-    background-color: #1DB954;
-    border: none;
+  background-color: #1DB954;
+  border: none;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    background-color: #128b3c;
+  background-color: #128b3c !important;
 }
 
-.player {
-  display: flex;
-  align-self: flex-start;
-  margin-top: 30px;
+.btn-check {
+  background-color: #1DB954;
+  border: none;
+  color: #ffffff;
+}
+
+option:hover {
+  background-color: #128b3c;
+}
+
+.btn-check:active {
+  background-color: #128b3c;
 }
 
 .track {
@@ -88,4 +85,12 @@ li > a, a:hover {
 
 .btn-secondary:hover {
   background-color: #8f1c1c;
+}
+
+.playlist-check {
+  display: none;
+}
+
+.playlist-check:checked + .btn-check {
+  background-color: #128b3c;
 }
