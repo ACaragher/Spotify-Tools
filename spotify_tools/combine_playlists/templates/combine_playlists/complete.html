@@ -1,10 +1,9 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% block title %}
-    <title>Home</title>
+    <title>Complete</title>
 {% endblock title%}
 {% block content %}
-{% if request.user.is_authenticated %}
     <main role="main" class="container">
         <div class="row">
             <div class="col-md card welcome-card">
@@ -18,17 +17,4 @@
         </div>
 
     </main>
-
-{% else %}
-    <main role="main" class="container">
-        <div class="card">
-            <div class="card-body text-center">
-                <h3 class="card-title">Spotify Playlist Tools Home</h3>
-                <p class="card-text">Login to your Spotify account to access the tools</p>
-                <a href="{% url 'social:begin' 'spotify' %}" class="btn btn-primary">Login Here</a>
-            </div>
-        </div>
-    </main>
-{% endif %}
-
 {% endblock content%}

@@ -8,4 +8,5 @@ urlpatterns = [
     path('liked_to_playlists/', include('liked_to_playlists.urls', namespace='liked_to_playlists')),
     path('setlist/', include('setlist.urls', namespace='setlist')),
     path('combine_playlists/', include('combine_playlists.urls', namespace='combine_playlists')),
+    path('genre_to_playlist', include('genre_to_playlist.urls', namespace='genre_to_playlist'))
 ]

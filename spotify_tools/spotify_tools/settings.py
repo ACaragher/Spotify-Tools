@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'social_django',
     'setlist',
     'combine_playlists',
+    'genre_to_playlist'
 ]
 
 #AUTH_USER_MODEL = "home.CustomUser"

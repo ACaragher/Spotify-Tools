@@ -1,0 +1,54 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}
+    <title>Genre to Playlist</title>
+{% endblock title%}
+{% block content %}
+    <main role="main" class="container">
+        {% if premium %}
+            <div class="row">
+                <div class="col-md card welcome-card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Genre to Playlist</h3>
+                        <p class="card-text">Select one or more playlists, select a genre, then create a playlist of all tracks from those playlists that match that genre</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md card mt-3">
+                    <div class="card-body">
+                        <h5 class="text-center">1. Select which genre:</h5>
+                        <form action="{% url 'genre_to_playlist:complete' %}" method="post">
+                            {% csrf_token %}
+                                <div class="text-center col-6 mx-auto mt-3">
+                                    <select class="custom-select text-center"  required name="genre_select">
+                                        <option selected value="">Select the genre...</option>
+                                        {% for genre in genres %}
+                                        <option value="{{ genre }}">{{ genre }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">2. Enter a name for the playlist:</h5>
+                                    <input type="text" class="form-control text-center mt-2" required name="new_playlist" blank=False>
+                                    <button type="submit" class="btn btn-primary mt-3" name="new_playlist_btn">Submit</button>
+                                </div>
+                                {% if error %}
+                                <p class="text-center" style="color: red;">{{ error_text }}</p>
+                                {% endif %}
+                        </form>      
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-md card welcome-card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Combine Playlists</h3>
+                        <p class="card-text" style="color: rgb(156, 3, 3);">Sorry, this feature requires a premium Spotify account</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+{% endblock content%}
