@@ -1,7 +1,7 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% block title %}
-    <title>Genre to Playlist</title>
+    <title>Tracks to Playlists</title>
 {% endblock title%}
 {% block content %}
     <main role="main" class="container">
@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="col-md card welcome-card">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Genre to Playlist</h3>
-                        <p class="card-text">Select two or more playlists to combine</p>
+                        <h3 class="card-title">Tracks to Playlist</h3>
+                        <p class="card-text">Select a playlist to go through: </p>
                     </div>
                 </div>
             </div>
@@ -18,18 +18,18 @@
                 <div class="col-md card mt-3">
                     <div class="card-body">
                         <h5 class="text-center">Select which playlist(s) you want to include:</h5>
-                        <form action="{% url 'genre_to_playlist:run' %}" method="post">
+                        <form action="{% url 'tracks_to_playlists:start' %}" method="post">
                             {% csrf_token %}
                                 <div class="form-check mb-4 text-center">
                                     {% for playlist in playlists %}
                                     <div class="m-3 col-6 mx-auto">
-                                        <input type="checkbox" class="playlist-check form-check-input" id="check {{ forloop.counter0 }}" name="playlist_checkbox" value="{{ forloop.counter0 }}">
-                                        <label class="btn-lg btn-block btn-check form-label" for="check {{ forloop.counter0 }}">{{ playlist }}</label>
+                                        <input type="radio" class="playlist-check form-check-input" id="radio {{ forloop.counter0 }}" name="playlist_radio" value="{{ forloop.counter0 }}">
+                                        <label class="btn-lg btn-block btn-check form-label" for="radio {{ forloop.counter0 }}">{{ playlist }}</label>
                                     </div>
                                     {% endfor %}
                                     <div class="m-3 col-6 mx-auto">
-                                        <input type="checkbox" class="playlist-check form-check-input" id="check liked" name="playlist_checkbox" value="liked">
-                                        <label class="btn-lg btn-block btn-check form-label" for="check liked">Your Liked Songs</label>
+                                        <input type="radio" class="playlist-check form-check-input" id="radio liked" name="playlist_radio" value="liked">
+                                        <label class="btn-lg btn-block btn-check form-label" for="radio liked">Your Liked Songs</label>
                                     </div>
                                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                 </div>

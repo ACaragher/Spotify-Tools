@@ -1,13 +1,10 @@
 from django.shortcuts import render
-from home.models import Token
 from django.contrib.auth.decorators import login_required
-import spotipy
+from spotify_tools import config
 
-
-@login_required
 def start(request):
-    token=Token.objects.filter(user=request.user).first()
-    sp = spotipy.Spotify(auth=token)
+    sp = config.get_user_auth(request.user)
+ 
     if sp.current_user()['product'] == 'premium':
         user_playlists = sp.current_user_playlists()['items']
         playlists = []
@@ -18,7 +15,8 @@ def start(request):
 
 @login_required
 def complete(request):
-    sp = spotipy.Spotify(auth=Token.objects.filter(user=request.user).first())
+    sp = config.get_user_auth(request.user)
+ 
     user_playlists = sp.current_user_playlists()['items']
     if request.method == 'POST':
         playlist_checkbox = request.POST.getlist('playlist_checkbox')
@@ -27,14 +25,17 @@ def complete(request):
         selected_ids = []
         if playlist_checkbox != "":
             for playlist in playlist_checkbox:
+                # Get list of id of each playlist selected
                 selected_ids.append(user_playlists[int(playlist)]['id'])
-
+            # If user chose an existing playlist
             if 'current_playlist_btn' in request.POST and playlist_selection != "":
                 if playlist_selection in playlist_checkbox: playlist_checkbox.remove(playlist_selection)
+                # Get playlist id where results of playlist combination will be put
                 destination_id = user_playlists[int(playlist_selection)]['id']
                 combine_playlists(selected_ids, destination_id, request.user, sp)
                 return render(request, 'combine_playlists/complete.html')
             elif 'new_playlist_btn' in request.POST:
+                # Create a new playlist prior to combining
                 new_playlist = sp.user_playlist_create(user=request.user, name=new_playlist)['id']
                 combine_playlists(selected_ids, new_playlist, request.user, sp)
                 return render(request, 'combine_playlists/complete.html')

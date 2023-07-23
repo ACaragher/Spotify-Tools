@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from . import cred, config
+from . import cred
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 SOCIAL_AUTH_SPOTIFY_KEY = cred.client_ID
 SOCIAL_AUTH_SPOTIFY_SECRET = cred.client_SECRET
-SOCIAL_AUTH_SPOTIFY_SCOPE = [config.scope]
+SOCIAL_AUTH_SPOTIFY_SCOPE = [cred.scope]
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/login_success"
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'liked_to_playlists',
+    'tracks_to_playlists',
     'social_django',
     'setlist',
     'combine_playlists',
@@ -150,4 +150,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/accounts/profile'
+LOGIN_REDIRECT_URL = 'home:login'

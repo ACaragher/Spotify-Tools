@@ -8,9 +8,10 @@
         <div class="row">
             <div class="col-md card welcome-card">
                 <div class="card-body text-center">
-                    <h3 class="card-title">Liked Songs to Playlists</h3>
-                    <p class="card-text" style="color: rgb(156, 3, 3);">You've gone through every song. Click the button below to return to the homepage:</p>
-                    <a href="{% url 'index' %}" class="btn btn-primary">Home</a>
+                    <h3 class="card-title">Tracks to Playlists</h3>
+                    <p class="card-text">You've gone through each track</p>
+                    <a href="{% url 'home:index' %}" class="btn btn-primary" style="width: 11rem;">Home</a>
+                    <a href="{% url 'tracks_to_playlists:select' %}" class="btn btn-primary" style="width: 11rem;">Pick Another Playlist</a>
                 </div>
             </div>
         </div>

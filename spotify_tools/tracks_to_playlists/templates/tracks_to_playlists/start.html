@@ -10,21 +10,23 @@
                 <div class="col-md card welcome-card">
                     <div class="card-body text-center">
                         <h3 class="card-title">Liked Songs to Playlists</h3>
-                        <p class="card-text">Go through each of your liked songs and pick a playlist to quickly add them to.</p>
+                        <p class="card-text">Go through each track of a playlist and pick another playlist to quickly add them to.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md card mt-3">
                     <div class="card-body text-center">
-                        <p>1. Open Spotify in your web browser by clicking the button below and return back to this page.</p>
+                        <h5>1. Open Spotify in your web browser by clicking the button below and return back to this page.</h5>
+                        <p></p>
                         <a class="btn-primary btn-lg" href="http://open.spotify.com" target="_blank">Open Spotify in new tab</a>
+                        <br><br>
+                        <h5>2. Once completed, click start.</h5>
                         <p></p>
-                        <p>2. Once completed, click start.</p>
-                        <a class="btn-primary btn-lg" href="{% url 'liked_to_playlists:run' %}">Start</a>
+                        <a class="btn-primary btn-lg" href="{% url 'tracks_to_playlists:run' %}">Start</a>
                         {% if failure %}
-                        <p></p>
-                        <p style="color: rgb(182, 18, 18);">Make sure to have Spotify open in another tab!</p>
+                            <p></p>
+                            <p style="color: rgb(182, 18, 18);">Make sure to have Spotify open in another tab!</p>
                         {% endif %}
                     </div>
                 </div>

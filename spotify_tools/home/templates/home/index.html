@@ -14,14 +14,18 @@
                 </div>
                 <div class="card mt-2">
                     <div class="card-body text-center">
-                        <h5 class="card-text font-weight-bold">Liked Songs to Playlists</h5>
-                        <p>Description</p>
-                        <h5 class="card-text font-weight-bold">Live Songs to Playlist</h5>
-                        <p>Description</p>
+                        <h5 class="card-text font-weight-bold">Tracks to Playlists</h5>
+                        <p>Pick a playlist and then go through it track-by-track, choosing another playlist to add the track to</p>
+                        <hr>
                         <h5 class="card-text font-weight-bold">Combine Playlists</h5>
-                        <p>Description</p>
+                        <p>Select two or more playlists and combine them, either into another playlist or a new one</p>
+                        <hr>
                         <h5 class="card-text font-weight-bold">Genre to Playlist</h5>
-                        <p>Description</p>
+                        <p>Select a playlist, then create a new playlist containing all tracks of a chosen genre from the select playlist</p>
+                        <hr>
+                        <h5 class="card-text font-weight-bold">Live Songs to Playlist</h5>
+                        <p>(Unavailable)</p>
+                        <hr>             
                     </div>
                 </div>
             </div>
@@ -29,10 +33,10 @@
                 <div class="sidebar mb-3">
                     <h3>Tools</h3>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-light"><a href="{% url 'liked_to_playlists:start' %}">Liked Songs to Playlists</a></li>
-                        <li class="list-group-item list-group-item-light"><a href="{% url 'setlist:start' %}">Live Songs to Playlist</a></li>
+                        <li class="list-group-item list-group-item-light"><a href="{% url 'tracks_to_playlists:select' %}">Tracks to Playlists</a></li>
                         <li class="list-group-item list-group-item-light"><a href="{% url 'combine_playlists:start' %}">Combine Playlists</a></li>
                         <li class="list-group-item list-group-item-light"><a href="{% url 'genre_to_playlist:start' %}">Genre to Playlist</a></li>
+                        <li class="list-group-item list-group-item-light"><a href="#">Live Songs to Playlist</a></li>
                     </ul>
                 </div>
             </div>

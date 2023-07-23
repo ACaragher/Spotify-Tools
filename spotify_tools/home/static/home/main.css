@@ -96,8 +96,8 @@ option:hover {
   background-color: #b12323;
 }
 
-.btn-secondary:hover {
-  background-color: #8f1c1c;
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+  background-color: #8f1c1c !important;
 }
 
 .playlist-check {
