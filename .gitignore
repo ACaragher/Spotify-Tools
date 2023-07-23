@@ -8,3 +8,7 @@ db.sqlite3
 db.sqlite3-journal
 
 /spotify_tools/home/migrations/
+
+/cred.py
+/main.py
+/playlist.py
