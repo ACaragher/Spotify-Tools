@@ -4,7 +4,10 @@
 
 *.log
 local_settings.py
-db.sqlite3
+spotify_tools/db.sqlite3
 db.sqlite3-journal
 
 /spotify_tools/home/migrations/
+
+main.py
+playlist.py
