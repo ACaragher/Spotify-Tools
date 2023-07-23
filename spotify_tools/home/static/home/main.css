@@ -42,6 +42,23 @@ ul {
   box-shadow: none;
 }
 
+.btn-description {
+  background-color: #ffffff;
+}
+
+.btn-description:hover {
+  background-color: #fafafa;
+}
+
+.btn-description, .btn-description:hover, .btn-description:focus {
+  font-size: 1.3rem;
+  box-shadow: none;
+}
+
+.tool-description {
+  border: none;
+}
+
 .sidebar {
   background: #ffffff;
   padding: 10px 20px;
@@ -68,12 +85,14 @@ li > a, a:hover {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background-color: #128b3c !important;
+  box-shadow: none !important;
 }
 
 .btn-check {
   background-color: #1DB954;
   border: none;
   color: #ffffff;
+  box-shadow: none;
 }
 
 option:hover {
