@@ -4,7 +4,7 @@
   <h1 align="center">Spotify Tools</h1>
 
   <p align="center">
-    A website to interact with and modify a user's Spotify playlists
+    A website to interact with and modify a user's Spotify playlists. Website is hosted at www.caragher.ie
   </p>
 </div>
 
