@@ -21,12 +21,11 @@
                         </p>
                         <div class="collapse" id="tracks_to_playlists">
                             <div class="card-text tool-description">
-                                Pick a playlist and go through it track-by-track, choosing another playlist to add the track to
+                                Pick a playlist and go through it track-by-track, choosing another playlist to add each track to
                             </div>
                             <a class="btn btn-primary my-4" href="{% url 'tracks_to_playlists:select' %}">Select</a>
                         </div>
                         <hr style="width: 85%;">
-                        <br>
                         <p>
                             <button class="btn btn-description btn-block dropdown-toggle" type="button" data-toggle="collapse" data-target="#combine_playlists" aria-expanded="false">
                                 Combine Playlists
@@ -34,12 +33,11 @@
                         </p>
                         <div class="collapse" id="combine_playlists">
                             <div class="card-text tool-description">
-                                Select two or more playlists and combine them, either with another playlist or to make a new one
+                                Combine multiple playlists, either into an existing playlist or into a new one
                             </div>
                             <a class="btn btn-primary my-4" href="{% url 'combine_playlists:start' %}">Select</a>
                         </div>
                         <hr style="width: 85%;">
-                        <br>
                         <p>
                             <button class="btn btn-description btn-block dropdown-toggle" type="button" data-toggle="collapse" data-target="#genre_to_playlist" aria-expanded="false">
                                 Genre to Playlist
@@ -47,10 +45,22 @@
                         </p>
                         <div class="collapse" id="genre_to_playlist">
                             <div class="card-text tool-description">
-                                Select a playlist, then create a new playlist containing all tracks of a chosen genre from the select playlist
+                                Create a new playlist containing every song of a chosen genre from your selected playlist
                             </div>
                             <a class="btn btn-primary my-4" href="{% url 'genre_to_playlist:start' %}">Select</a>
-                        </div>     
+                        </div>
+                        <hr style="width: 85%;">
+                        <p>
+                            <button class="btn btn-description btn-block dropdown-toggle mt-3" type="button" data-toggle="collapse" data-target="#shared_to_playlist" aria-expanded="false">
+                                Shared to Playlist
+                            </button>
+                        </p>
+                        <div class="collapse" id="shared_to_playlist">
+                            <div class="card-text tool-description">
+                                Pick a playlist and go through it track-by-track, choosing another playlist to add each track to
+                            </div>
+                            <a class="btn btn-primary my-4" href="{% url 'shared_to_playlist:start' %}">Select</a>
+                        </div>
                     </div>
                 </div>
             </div>

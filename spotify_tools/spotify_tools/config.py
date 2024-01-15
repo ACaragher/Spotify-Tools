@@ -7,6 +7,7 @@ from . import cred
 LIMIT = 50
 
 def get_user_auth(user):
+    print(cred.redirect_uri)
     sp = spotipy.Spotify(auth=Token.objects.filter(user=user).first())
 
     try:

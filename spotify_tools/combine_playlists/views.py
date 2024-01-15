@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from spotify_tools import config
 
+# Determines how many tracks are retrieved at a time, max = 50
+LIMIT = config.LIMIT
+
 def start(request):
     sp = config.get_user_auth(request.user)
  
@@ -26,7 +29,10 @@ def complete(request):
         if playlist_checkbox != "":
             for playlist in playlist_checkbox:
                 # Get list of id of each playlist selected
-                selected_ids.append(user_playlists[int(playlist)]['id'])
+                if playlist == 'liked':
+                    selected_ids.append('liked')
+                else:
+                    selected_ids.append(user_playlists[int(playlist)]['id'])
             # If user chose an existing playlist
             if 'current_playlist_btn' in request.POST and playlist_selection != "":
                 if playlist_selection in playlist_checkbox: playlist_checkbox.remove(playlist_selection)
@@ -52,12 +58,26 @@ def complete(request):
         return render(request, 'combine_playlists/start.html', {"premium": True, "error": True, "error_text": error_text, "playlists": playlists})
         
 def combine_playlists(selected_playlists, destination_playlist, user, sp):
-    for playlist in selected_playlists:
-        track_uris = []
+    for playlist_id in selected_playlists:
+        offset = 0
         try:
-            tracks = sp.user_playlist_tracks(user=user, playlist_id=playlist, fields='items')['items']
-            for track in tracks:
-                track_uris.append(track['track']['uri'])
-            sp.user_playlist_add_tracks(user=user, playlist_id=destination_playlist, tracks=track_uris)
-        except:
+            if playlist_id == 'liked':
+                curr_iter_songs = sp.current_user_saved_tracks(offset=offset, limit=LIMIT)['items']
+            else:
+                curr_iter_songs = sp.playlist_items(playlist_id=playlist_id, limit=100, offset=0)['items']
+            tracks = [track['track']['uri'] for track in curr_iter_songs]
+            sp.user_playlist_add_tracks(user=user, playlist_id=destination_playlist, tracks=tracks)
+
+            while curr_iter_songs:
+                if playlist_id == 'liked':
+                    offset += 50
+                    curr_iter_songs = sp.current_user_saved_tracks(offset=offset, limit=LIMIT)['items']
+                else:
+                    offset += 100
+                    curr_iter_songs = sp.user_playlist_tracks(user=user, offset=offset, limit=100, playlist_id=playlist_id)['items']
+                tracks = [track['track']['uri'] for track in curr_iter_songs]
+                sp.user_playlist_add_tracks(user=user, playlist_id=destination_playlist, tracks=tracks)
+
+        except Exception as e:
+            print(e)
             pass

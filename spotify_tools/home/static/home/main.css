@@ -16,30 +16,15 @@ ul {
   background-color: #1DB954;
 }
 
-.site-header .navbar-nav .nav-link {
-  color: #ffffff;
-}
-
-.site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
-}
-
-.site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
-}
-
 .navbar-brand {
     font-size: 2rem;
 }
 
-.navbar-nav {
-    font-size: 1.1rem;
-}
-
-.btn-dropdown, .btn-dropdown:hover, .btn-dropdown:focus {
-  color: #ffffff;
+.site-header, .btn-dropdown, .nav-link, .nav-link:hover, .btn-dropdown:hover, .btn-dropdown:focus {
+  color: #ffffff !important;
   font-size: 1.1rem;
   box-shadow: none;
+  font-weight: 500;
 }
 
 .btn-description {

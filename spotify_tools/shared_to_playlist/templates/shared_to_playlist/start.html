@@ -9,16 +9,16 @@
             <div class="row">
                 <div class="col-md card welcome-card">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Combine Playlists</h3>
-                        <p class="card-text">Select two or more playlists to combine</p>
+                        <h3 class="card-title">Shared to Playlist</h3>
+                        <p class="card-text">Select two or more playlists and create a new playlist containing the songs common to all of them</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md card mt-3">
                     <div class="card-body">
-                        <h5 class="text-center">1. Select which playlist(s) to copy:</h5>
-                        <form action="{% url 'combine_playlists:complete' %}" method="post">
+                        <h5 class="text-center">Select playlist(s):</h5>
+                        <form action="{% url 'shared_to_playlist:complete' %}" method="post">
                             {% csrf_token %}
                                 <div class="form-check mb-4 text-center">
                                     {% for playlist in playlists %}
@@ -32,19 +32,8 @@
                                         <label class="btn-lg btn-block btn-check form-label" for="check liked">Your Liked Songs</label>
                                     </div>
                                 </div>
-                                <hr>
-                                <h5 class="text-center">2. Select which playlist to copy to:</h5>
                                 <div class="text-center col-6 mx-auto mt-3">
-                                    <select class="custom-select text-center" id="playlistselect" name="playlist_select">
-                                        <option selected value="">Select a playlist to copy to...</option>
-                                        {% for playlist in playlists %}
-                                        <option value="{{ forloop.counter0 }}">{{ playlist }}</option>
-                                        {% endfor %}
-                                    </select>
-                                    <button type="submit" class="btn btn-primary my-3" name="current_playlist_btn">Submit</button>
-                                    <br>
-                                    <h6> - or - </h6>
-                                    <h5 class="text-center">Create a new playlist, enter its name below:</h5>
+                                    <h5 class="text-center">Enter the name of the new playlist below:</h5>
                                     <input type="text" class="form-control text-center mt-2" name="new_playlist" blank=False>
                                     <button type="submit" class="btn btn-primary mt-3" name="new_playlist_btn">Submit</button>
                                 </div>
@@ -59,7 +48,7 @@
             <div class="row">
                 <div class="col-md card welcome-card">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Combine Playlists</h3>
+                        <h3 class="card-title">Shared to Playlist</h3>
                         <p class="card-text" style="color: rgb(156, 3, 3);">Sorry, this feature requires a premium Spotify account</p>
                     </div>
                 </div>

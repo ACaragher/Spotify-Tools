@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'home',
     'tracks_to_playlists',
     'social_django',
-    'setlist',
+    'shared_to_playlist',
     'combine_playlists',
     'genre_to_playlist'
 ]

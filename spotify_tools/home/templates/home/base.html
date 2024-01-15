@@ -20,21 +20,22 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
                     <div class="navbar-nav mr-auto ml-3">
-                        <a class="nav-item nav-link" href="{% url 'home:index' %}">Home</a>
+                        <a class="nav-link" href="{% url 'home:index' %}">Home</a>
                         <div class="dropdown show">
                             <a class="btn dropdown-toggle btn-dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                               <a class="dropdown-item" href="{% url 'tracks_to_playlists:select' %}">Tracks to Playlists</a>
                               <a class="dropdown-item" href="{% url 'combine_playlists:start' %}">Combine Playlists</a>
-                              <a class="dropdown-item" href="{% url 'genre_to_playlist:start' %}">Genre to Playlist</a>                            
+                              <a class="dropdown-item" href="{% url 'genre_to_playlist:start' %}">Genre to Playlist</a>
+                              <a class="dropdown-item" href="{% url 'shared_to_playlist:start' %}">Shared to Playlist</a>                                                  
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="navbar-nav">
                         {% if user.is_authenticated%}
-                            <a class="nav-item nav-link" href="{% url 'home:logout' %}">Logout</a>
+                            <a class="nav-link" href="{% url 'home:logout' %}">Logout</a>
                         {% else %}
-                                <a class="nav-item nav-link" href="{% url "social:begin" "spotify" %}">Login</a>
+                                <a class="nav-link" href="{% url "social:begin" "spotify" %}">Login</a>
                         {% endif %}
                     </div>
                 </div>
@@ -56,7 +57,7 @@
     {% endif %}
     <div class="socials">
         <hr style="width: 80%">
-        <a style="color: #1DB954;" href="//linkedin.com/adamcaragher" role="button">
+        <a style="color: #1DB954;" href="//www.linkedin.com/in/adamcaragher/" role="button">
             <i class="fab fa-linkedin fa-2x"></i>
         </a>
         <a style="color: #1DB954;" href="//github.com/acaragher" role="button">

@@ -83,7 +83,7 @@ def complete(request):
         error_text = "Unknown Error"
     return render(request, 'genre_to_playlist/start.html', {"premium": True, "error": True, "error_text": error_text, "playlists": playlists})
     
-# Rtturn the artist uri for each artist in the playlist(s)
+# Return the artist uri for each artist in the playlist(s)
 def get_artist_uris(sp, playlist_ids):
     offset = 0
     artists = {}
