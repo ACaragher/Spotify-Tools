@@ -7,7 +7,7 @@
     A website to interact with and modify a user's Spotify playlists
   </p>
   <p>
-    The website can be accessed at <a href="www.caragher.ie">www.caragher.ie</a>
+    The website can be accessed at <a href="//www.caragher.ie">www.caragher.ie</a>
   </p>
 </div>
 
