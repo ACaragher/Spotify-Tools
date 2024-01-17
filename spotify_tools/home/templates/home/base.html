@@ -24,10 +24,10 @@
                         <div class="dropdown show">
                             <a class="btn dropdown-toggle btn-dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="{% url 'tracks_to_playlists:select' %}">Tracks to Playlists</a>
-                              <a class="dropdown-item" href="{% url 'combine_playlists:start' %}">Combine Playlists</a>
-                              <a class="dropdown-item" href="{% url 'genre_to_playlist:start' %}">Genre to Playlist</a>
-                              <a class="dropdown-item" href="{% url 'shared_to_playlist:start' %}">Shared to Playlist</a>                                                  
+                            <a class="dropdown-item" href="{% url 'tracks_to_playlists:select' %}">Tracks to Playlists</a>
+                            <a class="dropdown-item" href="{% url 'combine_playlists:start' %}">Combine Playlists</a>
+                            <a class="dropdown-item" href="{% url 'genre_to_playlist:start' %}">Genre to Playlist</a>
+                            <a class="dropdown-item" href="{% url 'shared_to_playlist:start' %}">Shared to Playlist</a>                                                  
                             </div>
                         </div>
                     </div>
@@ -42,21 +42,23 @@
             </div>
         </nav>
     </header>
-    {% if request.user.is_authenticated %}
-        {% block content %}{% endblock %}
-    {% else %}
-        <main role="main" class="container">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h3 class="card-title">Spotify Playlist Tools Home</h3>
-                    <p class="card-text">Login to your Spotify account to access the tools</p>
-                    <a href="{% url 'social:begin' 'spotify' %}" class="btn btn-primary">Login Here</a>
+    <div class="site-content">
+        {% if request.user.is_authenticated %}
+            {% block content %}{% endblock %}
+        {% else %}
+            <main role="main" class="container">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Spotify Playlist Tools Home</h3>
+                        <p class="card-text">Login to your Spotify account to access the tools</p>
+                        <a href="{% url 'social:begin' 'spotify' %}" class="btn btn-primary">Login Here</a>
+                    </div>
                 </div>
-            </div>
-        </main>
-    {% endif %}
-    <div class="socials">
-        <hr style="width: 80%">
+            </main>
+        {% endif %}
+    </div>
+    <div class="footer">
+        <hr style="width: 75%">
         <a style="color: #1DB954;" href="//www.linkedin.com/in/adamcaragher/" role="button">
             <i class="fab fa-linkedin fa-2x"></i>
         </a>
