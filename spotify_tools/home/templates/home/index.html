@@ -61,6 +61,18 @@
                             </div>
                             <a class="btn btn-primary my-4" href="{% url 'shared_to_playlist:start' %}">Select</a>
                         </div>
+                        <hr style="width: 85%;">
+                        <p>
+                            <button class="btn btn-description btn-block dropdown-toggle mt-3" type="button" data-toggle="collapse" data-target="#playlist_stats" aria-expanded="false">
+                                Playlist Stats
+                            </button>
+                        </p>
+                        <div class="collapse" id="playlist_stats">
+                            <div class="card-text tool-description">
+                                Display various stats about your selected playlist
+                            </div>
+                            <a class="btn btn-primary my-4" href="{% url 'playlist_stats:start' %}">Select</a>
+                        </div>
                     </div>
                 </div>
             </div>

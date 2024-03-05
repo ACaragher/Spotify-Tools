@@ -44,7 +44,8 @@ def complete(request):
                 playlists.append(user_playlists[i]['name'])
             error_text = "Please select which playlists you wish to copy"
         return render(request, 'combine_playlists/start.html', {"premium": True, "error": True, "error_text": error_text, "playlists": playlists})
-    
+
+# Adds shared tracks in the selected_playlist to the destination_playlist    
 def combine_playlist_intersection(selected_playlists, destination_playlist, user, sp):
     track_uris = set()
 
