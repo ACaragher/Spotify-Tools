@@ -32,8 +32,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r spotify_tools/requirements.txt
         
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -42,7 +40,7 @@ jobs:
         with:
           name: python-app
           path: |
-            release.zip
+            spotify_tools/release.zip
             !venv/
 
   deploy:
