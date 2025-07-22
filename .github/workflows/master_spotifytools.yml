@@ -9,7 +9,10 @@ on:
     branches:
       - master
   workflow_dispatch:
-
+  
+defaults:
+  run:
+    working-directory: ./spotify_tools
 jobs:
   build:
     runs-on: ubuntu-latest
