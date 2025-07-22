@@ -42,7 +42,7 @@ jobs:
         with:
           name: python-app
           path: |
-            spotify_tools/release.zip
+            release.zip
             !venv/
 
   deploy:
