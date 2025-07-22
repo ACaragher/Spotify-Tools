@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from . import cred
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=vzqd%r@kh4t%3*)rt%vi40#l&4jqcdxkv7l2d65du=05ttd%t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://spotifytools-gqgxdsg8asfvemh9.swedencentral-01.azurewebsites.net/', '51.12.31.8']
 
@@ -151,3 +152,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home:login'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
