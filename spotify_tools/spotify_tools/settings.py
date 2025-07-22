@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=vzqd%r@kh4t%3*)rt%vi40#l&4jqcdxkv7l2d65du=05ttd%t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://spotifytools-gqgxdsg8asfvemh9.swedencentral-01.azurewebsites.net/', '51.12.31.8']
+ALLOWED_HOSTS = ['https://spotifytools-gqgxdsg8asfvemh9.swedencentral-01.azurewebsites.net/', '51.12.31.8', '127.0.0.1', '[::1]']
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 SOCIAL_AUTH_SPOTIFY_KEY = cred.client_ID
