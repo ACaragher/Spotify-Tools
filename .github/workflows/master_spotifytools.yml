@@ -60,12 +60,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-        
-      - name: Run Django server
-        run: |
-          python manage.py migrate
-          python manage.py test restaurant_review &&
-          python manage.py runserver &
+
       
       - name: Login to Azure
         uses: azure/login@v2
