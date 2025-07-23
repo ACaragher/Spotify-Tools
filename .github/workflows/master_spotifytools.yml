@@ -28,6 +28,8 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
+          python manage.py collectstatic --noinput
+          python manage.py migrate
       
       - name: Install dependencies
         run: pip install -r spotify_tools/requirements.txt
