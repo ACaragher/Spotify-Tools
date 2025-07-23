@@ -28,6 +28,7 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
+          cd spotify_tools
           python manage.py collectstatic --noinput
           python manage.py migrate
       
