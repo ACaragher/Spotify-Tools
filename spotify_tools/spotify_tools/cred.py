@@ -1,3 +1,5 @@
+import os
+
 client_ID=os.getenv('SPOTIFY_CLIENT_ID')
 client_SECRET=os.getenv('SPOTIFY_API_KEY')
 redirect_uri='https://www.caragher.ie/social/complete/spotify/'
